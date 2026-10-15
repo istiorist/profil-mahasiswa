@@ -10,6 +10,7 @@ class InfoRow extends StatelessWidget {
     required this.label,
     this.iconColor,
   });
+
   @override
   Widget build(BuildContext context) {
     return Padding(
