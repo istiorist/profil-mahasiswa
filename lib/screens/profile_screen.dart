@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import '../widgets/profile_photo.dart';
+import '../widgets/profile_header.dart';
 import '../widgets/profile_info.dart';
+import '../widgets/action_buttons.dart';
+import '../widgets/sosmed_row.dart';
+import '../screens/about_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -10,40 +13,61 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profil Mahasiswa'),
-        backgroundColor: Colors.blue,foregroundColor: Colors.white,
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        centerTitle: true,
+        elevation: 0,
       ),
-      body: SingleChildScrollView(
+      body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 24),
-              const ProfilePhoto(radius: 60),
-              const SizedBox(height: 24),
-              const ProfileInfo(
-                name: 'Nama Mahasiswa',
-                nim: '21.11.0000',
-                programStudi: 'S1 Informatika',
-                email: 'email@students.amikom.ac.id',
-                lokasi: 'Yogyakarta, Indonesia',
+              Expanded(
+                child: Column(
+                  children: const [
+                    SizedBox(height: 8),
+                    ProfileHeader(
+                      name: 'Istiqomah',
+                      nim: '26.21.1620',
+                      photoRadius: 50,
+                    ),
+                    SizedBox(height: 20),
+                    ProfileInfo(
+                      programStudi: 'S1 Informatika',
+                      email: 'istiqomah061@students.amikom.ac.id',
+                      lokasi: 'Yogyakarta, Indonesia',
+                    ),
+                    Spacer(),
+                  ],
+                ),
               ),
-              const SizedBox(height: 24),
-              // Tombol aksi
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.edit),
-                    label: const Text('Edit'),
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.share),
-                    label: const Text('Bagikan'),
-                  ),
-                ],
+
+              ActionButtons(
+                onEditPressed: () {},
+                onSharePressed: () {},
+              ),
+
+              const SizedBox(height: 12),
+              const Divider(height: 1, color: Colors.black12),
+              const SizedBox(height: 8),
+
+              const SocialMediaRow(),
+
+              TextButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AboutScreen(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.info_outline, size: 16),
+                label: const Text(
+                  'Tentang Aplikasi',
+                  style: TextStyle(fontSize: 13),
+                ),
               ),
             ],
           ),
