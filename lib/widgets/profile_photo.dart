@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class ProfilePhoto extends StatelessWidget {
   final String? imageUrl;
   final double radius;
@@ -7,6 +8,7 @@ class ProfilePhoto extends StatelessWidget {
     this.imageUrl,
     this.radius = 60,
   });
+
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
