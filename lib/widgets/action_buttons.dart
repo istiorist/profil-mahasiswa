@@ -4,7 +4,7 @@ class ActionButtons extends StatelessWidget {
   final VoidCallback? onEditPressed;
   final VoidCallback? onSharePressed;
 
-  const ActionButtons({
+  const   ActionButtons({
     super.key,
     this.onEditPressed,
     this.onSharePressed,
